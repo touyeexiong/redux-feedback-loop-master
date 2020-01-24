@@ -21,9 +21,19 @@ const understandingSetter = (state = {}, action) => {
     return state
 }
 
+const supportedSetter = (state = {}, action) => {
+    if (action.type === 'ADD_SUPPORTED') {
+        return action.payload
+    }
+    return state
+}
+
+
 const storeInstance = createStore(
     combineReducers({
         feelingSetter,
+        understandingSetter,
+        supportedSetter
     }),
     applyMiddleware(logger),
 )
