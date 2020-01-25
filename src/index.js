@@ -7,21 +7,28 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from "react-redux";
 import registerServiceWorker from './registerServiceWorker';
 
-const feelingSetter = (state = {}, action) => {
+const commentsSetter = (state = {}, action) => {
+    if (action.type === 'ADD_COMMENTS') {
+        return action.payload
+    }
+    return state
+}
+
+const feelingSetter = (state = 0, action) => {
     if (action.type === 'ADD_FEELING') {
         return action.payload
     }
     return state
 }
 
-const understandingSetter = (state = {}, action) => {
+const understandingSetter = (state = 0, action) => {
     if (action.type === 'ADD_UNDERSTANDING') {
         return action.payload
     }
     return state
 }
 
-const supportedSetter = (state = {}, action) => {
+const supportedSetter = (state = 0, action) => {
     if (action.type === 'ADD_SUPPORTED') {
         return action.payload
     }
@@ -33,7 +40,8 @@ const storeInstance = createStore(
     combineReducers({
         feelingSetter,
         understandingSetter,
-        supportedSetter
+        supportedSetter,
+        commentsSetter
     }),
     applyMiddleware(logger),
 )

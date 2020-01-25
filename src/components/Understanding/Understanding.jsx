@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Understanding extends Component {
 
     state = {
-        understanding: {},
+        understanding: 0,
     }
 
     handleUnderstanding = () => {
@@ -18,7 +18,7 @@ class Understanding extends Component {
     }
     newUnderstanding = (event) => {
         this.setState({
-            understanding: event.target.value,
+            understanding: Number(event.target.value),
         })
     }
 

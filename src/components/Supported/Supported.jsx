@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Supported extends Component {
 
     state = {
-        supported: {},
+        supported: 0,
     }
 
     handleSupported = () => {
@@ -14,11 +14,11 @@ class Supported extends Component {
             type: 'ADD_SUPPORTED',
             payload: this.state.supported
         })
-        // this.props.history.push('/supported')
+        this.props.history.push('/comment')
     }
     newSupported = (event) => {
         this.setState({
-            supported: event.target.value,
+            supported: Number(event.target.value),
         })
     }
 
