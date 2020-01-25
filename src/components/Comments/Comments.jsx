@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Comments extends Component {
 
     state = {
-        comments: {},
+        comments: '',
     }
 
     handleComments = () => {
@@ -14,7 +14,7 @@ class Comments extends Component {
             type: 'ADD_COMMENTS',
             payload: this.state.comments
         })
-        this.props.history.push('/')
+        this.props.history.push('/review')
     }
     newComments = (event) => {
         this.setState({

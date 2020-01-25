@@ -7,7 +7,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from "react-redux";
 import registerServiceWorker from './registerServiceWorker';
 
-const commentsSetter = (state = {}, action) => {
+const commentsSetter = (state = '', action) => {
     if (action.type === 'ADD_COMMENTS') {
         return action.payload
     }

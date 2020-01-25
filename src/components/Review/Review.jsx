@@ -26,11 +26,11 @@ class Comments extends Component {
         return (
             <>
                 <h1>Review Your Feedback</h1>
-                <div>{JSON.stringify(this.props.reduxStore.commentsSetter.comments)}</div>
+                {/* <div>{JSON.stringify(this.props.reduxStore.commentsSetter.comments)}</div> */}
                 <div>Feelings: {this.props.reduxStore.feelingSetter}</div>
                 <div>Understanding: {this.props.reduxStore.understandingSetter}</div>
                 <div>Support: {this.props.reduxStore.supportedSetter}</div>
-                {/* <div>Comments: {this.props.reduxStore.commentsSetter}</div> */}
+                <div>Comments: {this.props.reduxStore.commentsSetter}</div>
 
                 <button onClick={this.handleComments}>Next</button>
             </>
