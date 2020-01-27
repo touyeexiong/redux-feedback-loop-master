@@ -9,17 +9,26 @@ class Supported extends Component {
     }
 
     handleSupported = () => {
-        console.log('we moving');
-        this.props.dispatch({
-            type: 'ADD_SUPPORTED',
-            payload: this.state.supported
-        })
-        this.props.history.push('/comment')
+        this.handleValidation ();
+
     }
     newSupported = (event) => {
         this.setState({
             supported: Number(event.target.value),
         })
+    }
+
+    handleValidation = () => {
+        if (this.state.supported > 0 && this.state.supported < 11) {
+            this.props.dispatch({
+                type: 'ADD_SUPPORTED',
+                payload: this.state.supported
+            })
+            this.props.history.push('/comment')
+        } else {
+            alert("A value of 1-10 must be provided!")
+        }
+
     }
 
     render() {
