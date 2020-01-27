@@ -30,6 +30,8 @@ class App extends Component {
                 <Route exact path="/supported" component={Supported} />
                 <Route exact path="/comment" component={Comments} />
                 <Route exact path="/review" component={Review} />
+                <Route exact path="/confirmation" component={Confirmation} />
+
               </div>
             </Router>
           </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 
 class Comments extends Component {
@@ -8,19 +9,34 @@ class Comments extends Component {
         comments: {},
     }
 
-    handleComments = () => {
-        console.log('we moving');
-        this.props.dispatch({
-            type: 'ADD_COMMENTS',
-            payload: this.state.comments
-        })
+    handleSubmit = () => {
+
+        // axios.post('/')
         // this.props.history.push('/comments')
-    }
-    newComments = (event) => {
-        this.setState({
-            comments: event.target.value,
+        let newFeedback = {
+            feeling: this.props.reduxStore.feelingSetter ,
+            understanding: this.props.reduxStore.understandingSetter,
+            support: this.props.reduxStore.supportedSetter,
+            comments: this.props.reduxStore.commentsSetter
+        }
+
+        // console.log('we moving', newFeedback);
+        axios.post(`/feedback`, newFeedback)
+        .then((result) => {
+            console.log(result);
+            
+            
+        })
+        .catch((err) => {
+            alert(err)
         })
     }
+    // newComments = (event) => {
+    //     this.setState({
+    //         comments: event.target.value,
+    //     })
+    // }
+    
 
     render() {
         return (
@@ -32,7 +48,7 @@ class Comments extends Component {
                 <div>Support: {this.props.reduxStore.supportedSetter}</div>
                 <div>Comments: {this.props.reduxStore.commentsSetter}</div>
 
-                <button onClick={this.handleComments}>Next</button>
+                <button onClick={this.handleSubmit}>Submit</button>
             </>
         )
     }
